@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Google Maps 生活道路(道幅5.5m未満)チェッカー",
+  "version": "1.0",
+  "description": "Googleマップで中央線のない狭路（5.5m未満/30km制限対象）を判定・警告します",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.google.com/maps/*",
+    "https://www.google.co.jp/maps/*",
+    "https://api.openstreetmap.org/*",
+    "https://overpass-api.de/*",
+    "https://lz4.overpass-api.de/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/maps/*",
+        "https://www.google.co.jp/maps/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
